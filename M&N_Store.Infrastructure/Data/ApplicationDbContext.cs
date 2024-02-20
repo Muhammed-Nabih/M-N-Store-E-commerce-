@@ -1,4 +1,4 @@
-﻿using M_N_Store.Domain.Entities;
+﻿using N_Store.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M_N_Store.Infrastructure.Data
+namespace N_Store.Infrastructure.Data
 {
     public class ApplicationDbContext : DbContext
     {

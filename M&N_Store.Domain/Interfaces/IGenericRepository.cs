@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M_N_Store.Domain.Interfaces
+namespace N_Store.Domain.Interfaces
 {
     public interface IGenericRepository<T> where T : class
     {

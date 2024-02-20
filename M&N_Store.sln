@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M&N_Store", "M&N_Store\M&N_Store.csproj", "{86D5C8CA-AFB9-475C-9692-DF48787FBF16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M&N_Store", "M&N_Store\M&N_Store.csproj", "{86D5C8CA-AFB9-475C-9692-DF48787FBF16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M&N_Store.Domain", "M&N_Store.Domain\M&N_Store.Domain.csproj", "{C49AF54E-B048-45E4-9DC6-C1A36478CCE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M&N_Store.Domain", "M&N_Store.Domain\M&N_Store.Domain.csproj", "{C49AF54E-B048-45E4-9DC6-C1A36478CCE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M&N_Store.Infrastructure", "M&N_Store.Infrastructure\M&N_Store.Infrastructure.csproj", "{A3833DCA-2506-4355-AA9E-C4F756AAAF62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M&N_Store.Infrastructure", "M&N_Store.Infrastructure\M&N_Store.Infrastructure.csproj", "{A3833DCA-2506-4355-AA9E-C4F756AAAF62}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AA6F304E-E6FB-4F92-9162-7853292C1A68}"
 EndProject

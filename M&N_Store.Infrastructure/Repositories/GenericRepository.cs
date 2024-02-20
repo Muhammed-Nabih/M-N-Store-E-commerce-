@@ -1,5 +1,5 @@
-﻿using M_N_Store.Domain.Interfaces;
-using M_N_Store.Infrastructure.Data;
+﻿using N_Store.Domain.Interfaces;
+using N_Store.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M_N_Store.Infrastructure.Repositories
+namespace N_Store.Infrastructure.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
