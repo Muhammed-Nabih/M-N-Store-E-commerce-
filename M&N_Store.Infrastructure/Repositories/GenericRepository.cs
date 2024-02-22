@@ -27,7 +27,7 @@ namespace N_Store.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(T id)
+        public async Task DeleteAsync(int id)
         {
             var entity = await _context.Set<T>().FindAsync(id);
             _context.Set<T>().Remove(entity);
@@ -56,12 +56,12 @@ namespace N_Store.Infrastructure.Repositories
             return await query.ToListAsync();
         }
 
-        public async Task<T> GetAsync(T id)
+        public async Task<T> GetAsync(int id)
         {
             return await _context.Set<T>().FindAsync(id);
         }
 
-        public async Task<T> GetByIdAsync(T id, params Expression<Func<T, object>>[] includes)
+        public async Task<T> GetByIdAsync(int id, params Expression<Func<T, object>>[] includes)
         {
             IQueryable<T> query = _context.Set<T>();
             foreach(var item in includes)
@@ -71,7 +71,7 @@ namespace N_Store.Infrastructure.Repositories
             return await ((DbSet<T>)query).FindAsync(id);
         }
 
-        public async Task UpdateAsync(T id, T entity)
+        public async Task UpdateAsync(int id, T entity)
         {
             var currentEntity = await _context.Set<T>().FindAsync(id);
             if (currentEntity != null)

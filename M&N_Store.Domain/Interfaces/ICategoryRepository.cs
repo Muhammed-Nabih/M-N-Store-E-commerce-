@@ -9,6 +9,6 @@ namespace N_Store.Domain.Interfaces
 {
     public interface ICategoryRepository:IGenericRepository<Category>
     {
-        // for future
+
     }
 }
