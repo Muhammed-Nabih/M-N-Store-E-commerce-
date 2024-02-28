@@ -1,4 +1,5 @@
-﻿using System;
+﻿using N_Store.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace N_Store.Domain.Interfaces
 {
-    public interface IGenericRepository<T> where T : class
+    public interface IGenericRepository<T> where T : BaseEntity<int>
     {
         Task<IReadOnlyList<T>> GetAllAsync();
         IEnumerable<T> GetAll();

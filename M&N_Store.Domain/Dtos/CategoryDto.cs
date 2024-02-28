@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace M_N_Store.Dtos
+namespace M_N_Store.Core.Dtos
 {
   
     public class CategoryDto
@@ -11,6 +11,11 @@ namespace M_N_Store.Dtos
     }
 
     public class ListingCategoryDto : CategoryDto
+    {
+        public int Id { get; set; }
+    }
+
+    public class UpdateCategoryDto : CategoryDto
     {
         public int Id { get; set; }
     }

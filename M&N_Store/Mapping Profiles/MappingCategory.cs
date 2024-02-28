@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using M_N_Store.Dtos;
+using M_N_Store.Core.Dtos;
 using N_Store.Domain.Entities;
 
 namespace M_N_Store.Mapping_Profiles
@@ -10,6 +10,7 @@ namespace M_N_Store.Mapping_Profiles
         {
             CreateMap<CategoryDto, Category>().ReverseMap();
             CreateMap<ListingCategoryDto, Category>().ReverseMap();
+            CreateMap<UpdateCategoryDto, Category>().ReverseMap();
         }
     }
 }

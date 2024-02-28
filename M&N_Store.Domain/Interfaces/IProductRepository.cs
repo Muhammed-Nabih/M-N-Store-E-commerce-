@@ -1,4 +1,6 @@
-﻿using N_Store.Domain.Entities;
+﻿using M_N_Store.Core.Dtos;
+
+using N_Store.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,9 @@ namespace N_Store.Domain.Interfaces
 {
     public interface IProductRepository : IGenericRepository<Product>
     {
+        Task<bool> AddAsync(CreateProductDto dto);
+        Task<bool> UpdateAsync(int id, UpdateProductDto dto);
+        Task<bool> DeleteAsyncWithPicture(int id);
 
     }
 }

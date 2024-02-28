@@ -1,3 +1,4 @@
+using Microsoft.Extensions.FileProviders;
 using N_Store.Infrastructure;
 using System.Reflection;
 
@@ -14,8 +15,11 @@ builder.Services.InfrastructureConfiguration(builder.Configuration);
 //Configure Automapper
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-var app = builder.Build();
+//Configure IFileProvider
+builder.Services.AddSingleton<IFileProvider>(new PhysicalFileProvider(
+    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -25,7 +29,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseStaticFiles();
 app.UseAuthorization();
 
 app.MapControllers();

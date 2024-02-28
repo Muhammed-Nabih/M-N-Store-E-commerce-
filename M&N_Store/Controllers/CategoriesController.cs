@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using M_N_Store.Dtos;
+using M_N_Store.Core.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using N_Store.Domain.Entities;
@@ -70,12 +70,13 @@ namespace M_N_Store.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var newCategory = new Category
-                    {
-                        Name = categoryDto.Name,
-                        Description = categoryDto.Description
-                    };
-                    await _uOW.CategoryRepository.AddAsync(newCategory);
+                    //var newCategory = new Category
+                    //{
+                    //    Name = categoryDto.Name,
+                    //    Description = categoryDto.Description
+                    //};
+                    var res = _mapper.Map<Category>(categoryDto);
+                    await _uOW.CategoryRepository.AddAsync(res);
                     return Ok(categoryDto);
                 }
                 return BadRequest(categoryDto);
@@ -86,23 +87,24 @@ namespace M_N_Store.Controllers
             }
         }
 
-        [HttpPut("update-existing-category-by-id/{id}")]
-        public async Task<ActionResult> Put(int id,CategoryDto categoryDto)
+        [HttpPut("update-existing-category-by-id")]
+        public async Task<ActionResult> Put(UpdateCategoryDto categoryDto)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var existingCategory = await _uOW.CategoryRepository.GetAsync(id);
+                    var existingCategory = await _uOW.CategoryRepository.GetAsync(categoryDto.Id);
                     if (existingCategory != null)
                     {
-                        existingCategory.Name = categoryDto.Name;
-                        existingCategory.Description = categoryDto.Description;
-                        await _uOW.CategoryRepository.UpdateAsync(id, existingCategory);
-                        return Ok(existingCategory);
+                        //existingCategory.Name = categoryDto.Name;
+                        //existingCategory.Description = categoryDto.Description;
+                        _mapper.Map(categoryDto, existingCategory);
+                        await _uOW.CategoryRepository.UpdateAsync(categoryDto.Id, existingCategory);
+                        return Ok(categoryDto);
                     }
                 }
-                return BadRequest($"Category Not Found , Id [{id}] Incorrect");
+                return BadRequest($"Category Not Found , Id [{categoryDto.Id}] Incorrect");
             }
             catch (Exception ex)
             {
