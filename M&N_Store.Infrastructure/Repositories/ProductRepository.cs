@@ -60,48 +60,46 @@ namespace N_Store.Infrastructure.Repositories
 
         }
 
-        public async Task<bool> UpdateAsync(int id,UpdateProductDto dto)
+        public async Task<bool> UpdateAsync(int id, UpdateProductDto dto)
         {
             var currentProduct = await _context.Products.FindAsync(id);
             if (currentProduct is not null)
             {
-                var src = "";
-                if (dto.Image is not null)
+                var root = "/images/products";
+                var productName = $"{Guid.NewGuid()}" + dto.Image.FileName;
+                if (!Directory.Exists("wwwroot" + root))
                 {
-                    var root = "/images/products";
-                    var productName = $"{Guid.NewGuid()}" + dto.Image.FileName;
-                    if (!Directory.Exists("wwwroot" + root))
-                    {
-                        Directory.CreateDirectory("wwwroot" + root);
-                    }
-                    src = root + productName;
-                    var picInfo = _fileProvider.GetFileInfo(src);
-                    var rootPath = picInfo.PhysicalPath;
-                    using (var fileStream = new FileStream(rootPath, FileMode.Create))
-                    {
-                        await dto.Image.CopyToAsync(fileStream);
-                    }
-
-                    
+                    Directory.CreateDirectory("wwwroot" + root);
                 }
+                var src = root + productName;
+                var picInfo = _fileProvider.GetFileInfo(src);
+                var rootPath = picInfo.PhysicalPath;
+                using (var fileStream = new FileStream(rootPath, FileMode.Create))
+                {
+                    await dto.Image.CopyToAsync(fileStream);
+                }
+
+
+          
 
                 //remove old picture
                 if (!string.IsNullOrEmpty(currentProduct.ProductPicture))
                 {
                     //delete old picture
-                    var picInfo = _fileProvider.GetFileInfo(currentProduct.ProductPicture);
-                    var rootPath = picInfo.PhysicalPath;
-                    System.IO.File.Delete(rootPath);
+                    var oldFilePath = _fileProvider.GetFileInfo(currentProduct.ProductPicture).PhysicalPath;
+                    if (File.Exists(oldFilePath))
+                    {
+                        System.IO.File.Delete(oldFilePath);
+                    }
                 }
-
+                currentProduct.ProductPicture = src;
                 //update product
-                var res = _mapper.Map<Product>(dto);
-                res.ProductPicture = src;
-                _context.Products.Update(res);
+                _mapper.Map(dto, currentProduct);
                 await _context.SaveChangesAsync();
-
                 return true;
             }
+
+
             return false;
 
         }
