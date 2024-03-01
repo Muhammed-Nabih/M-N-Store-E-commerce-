@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using M_N_Store.Core.Dtos;
+using M_N_Store.Errors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using N_Store.Domain.Entities;
@@ -29,9 +30,12 @@ namespace M_N_Store.Controllers
         }
 
         [HttpGet("get-product-by-id/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(BaseCommonResponse),StatusCodes.Status404NotFound)]
         public async Task<ActionResult> Get(int id)
         {
             var src = await _uOW.ProductRepository.GetByIdAsync(id, x=> x.Category);
+            if (src == null) return NotFound(new BaseCommonResponse(404));
             var result = _mapper.Map<ProductDto>(src);
             return Ok(result);
         }
