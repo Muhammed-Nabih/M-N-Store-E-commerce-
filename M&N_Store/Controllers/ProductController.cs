@@ -22,10 +22,10 @@ namespace M_N_Store.Controllers
 
 
         [HttpGet("get-all-products")]
-        public async Task<ActionResult> Get(string sort)
+        public async Task<ActionResult> Get(string sort, int? categoryId)
         {
             //var src = await _uOW.ProductRepository.GetAllAsync(x=>x.Category);
-            var src = await _uOW.ProductRepository.GetAllAsync(sort);
+            var src = await _uOW.ProductRepository.GetAllAsync(sort,categoryId);
             var result = _mapper.Map<List<ProductDto>>(src); 
             return Ok(result);
         }

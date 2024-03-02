@@ -29,12 +29,19 @@ namespace N_Store.Infrastructure.Repositories
 
         }
 
-        public async Task<IEnumerable<ProductDto>> GetAllAsync(string sort)
+        public async Task<IEnumerable<ProductDto>> GetAllAsync(string sort, int? categoryId)
         {
             var query = await _context.Products
                 .Include(x=>x.Category)
                 .AsNoTracking()
                 .ToListAsync();
+
+            // Search By CategoryId
+            if (categoryId.HasValue)
+            {
+                query = query.Where(x=>x.CategoryId == categoryId.Value).ToList();
+            }
+            // Sorting
             if (!string.IsNullOrEmpty(sort))
             {
                 switch (sort)

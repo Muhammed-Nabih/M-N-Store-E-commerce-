@@ -11,7 +11,7 @@ namespace N_Store.Domain.Interfaces
 {
     public interface IProductRepository : IGenericRepository<Product>
     {
-        Task<IEnumerable<ProductDto>> GetAllAsync(string sort);
+        Task<IEnumerable<ProductDto>> GetAllAsync(string sort,int? categoryId);
         Task<bool> AddAsync(CreateProductDto dto);
         Task<bool> UpdateAsync(int id, UpdateProductDto dto);
         Task<bool> DeleteAsyncWithPicture(int id);
