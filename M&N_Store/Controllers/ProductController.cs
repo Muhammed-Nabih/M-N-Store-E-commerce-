@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using M_N_Store.Core.Dtos;
+using M_N_Store.Domain.Sharing;
 using M_N_Store.Errors;
+using M_N_Store.Helper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using N_Store.Domain.Entities;
@@ -22,12 +24,13 @@ namespace M_N_Store.Controllers
 
 
         [HttpGet("get-all-products")]
-        public async Task<ActionResult> Get(string sort, int? categoryId)
+        public async Task<ActionResult> Get([FromQuery]ProductParams productParams)
         {
             //var src = await _uOW.ProductRepository.GetAllAsync(x=>x.Category);
-            var src = await _uOW.ProductRepository.GetAllAsync(sort,categoryId);
-            var result = _mapper.Map<List<ProductDto>>(src); 
-            return Ok(result);
+            var src = await _uOW.ProductRepository.GetAllAsync(productParams);
+            var result = _mapper.Map<IReadOnlyList<ProductDto>>(src);
+            var totalItems = result.Count();
+            return Ok(new Pagination<ProductDto>(productParams.PageNumber, productParams.PageSize, totalItems, result));
         }
 
         [HttpGet("get-product-by-id/{id}")]

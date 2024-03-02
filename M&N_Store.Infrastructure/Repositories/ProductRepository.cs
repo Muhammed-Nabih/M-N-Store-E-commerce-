@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using M_N_Store.Core.Dtos;
+
+using M_N_Store.Domain.Sharing;
 using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
@@ -29,33 +31,36 @@ namespace N_Store.Infrastructure.Repositories
 
         }
 
-        public async Task<IEnumerable<ProductDto>> GetAllAsync(string sort, int? categoryId)
+        public async Task<IEnumerable<ProductDto>> GetAllAsync(ProductParams productParams)
         {
             var query = await _context.Products
                 .Include(x=>x.Category)
                 .AsNoTracking()
                 .ToListAsync();
 
-            // Search By CategoryId
-            if (categoryId.HasValue)
+            // Search By Name
+            if(!string.IsNullOrEmpty(productParams.Search))
+                query = query.Where(x=>x.Name.ToLower().Contains(productParams.Search)).ToList();
+
+            // Filtering By CategoryId
+            if (productParams.CategoryId.HasValue)
             {
-                query = query.Where(x=>x.CategoryId == categoryId.Value).ToList();
+                query = query.Where(x=>x.CategoryId == productParams.CategoryId.Value).ToList();
             }
             // Sorting
-            if (!string.IsNullOrEmpty(sort))
+            if (!string.IsNullOrEmpty(productParams.Sort))
             {
-                switch (sort)
+                query = productParams.Sort switch
                 {
-                    case "PriceAsync":
-                        query = query.OrderBy(x => x.Price).ToList(); break;
-                    case "PriceDesc":
-                        query = query.OrderByDescending(x => x.Price).ToList(); break;
-                    case "name":
-                    default:
-                        query = query.OrderBy(x => x.Name).ToList();
-                        break;
-                }
+                    "PriceAsc" => query.OrderBy(x => x.Price).ToList(),
+                    "PriceDesc" => query.OrderByDescending(x => x.Price).ToList(),
+                    _ => query.OrderBy(x => x.Name).ToList(),
+                };
             }
+
+            //Paging
+            query = query.Skip((productParams.PageSize) * (productParams.PageNumber - 1)).Take(productParams.PageSize).ToList();
+
 
             var _result = _mapper.Map<List<ProductDto>>(query);
             return _result;

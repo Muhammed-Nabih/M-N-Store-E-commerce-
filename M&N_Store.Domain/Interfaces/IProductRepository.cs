@@ -1,5 +1,5 @@
 ﻿using M_N_Store.Core.Dtos;
-
+using M_N_Store.Domain.Sharing;
 using N_Store.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ namespace N_Store.Domain.Interfaces
 {
     public interface IProductRepository : IGenericRepository<Product>
     {
-        Task<IEnumerable<ProductDto>> GetAllAsync(string sort,int? categoryId);
+        Task<IEnumerable<ProductDto>> GetAllAsync(ProductParams productParams);
         Task<bool> AddAsync(CreateProductDto dto);
         Task<bool> UpdateAsync(int id, UpdateProductDto dto);
         Task<bool> DeleteAsyncWithPicture(int id);
