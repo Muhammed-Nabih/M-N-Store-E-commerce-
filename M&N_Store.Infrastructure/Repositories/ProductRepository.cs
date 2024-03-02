@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using M_N_Store.Core.Dtos;
 using Microsoft.AspNetCore.Routing.Constraints;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using N_Store.Domain.Entities;
 using N_Store.Domain.Interfaces;
@@ -26,6 +27,31 @@ namespace N_Store.Infrastructure.Repositories
             _fileProvider = fileProvider;
             _mapper = mapper;
 
+        }
+
+        public async Task<IEnumerable<ProductDto>> GetAllAsync(string sort)
+        {
+            var query = await _context.Products
+                .Include(x=>x.Category)
+                .AsNoTracking()
+                .ToListAsync();
+            if (!string.IsNullOrEmpty(sort))
+            {
+                switch (sort)
+                {
+                    case "PriceAsync":
+                        query = query.OrderBy(x => x.Price).ToList(); break;
+                    case "PriceDesc":
+                        query = query.OrderByDescending(x => x.Price).ToList(); break;
+                    case "name":
+                    default:
+                        query = query.OrderBy(x => x.Name).ToList();
+                        break;
+                }
+            }
+
+            var _result = _mapper.Map<List<ProductDto>>(query);
+            return _result;
         }
 
         /************************************************* ADD IMAGE ****************************************************/
@@ -80,7 +106,7 @@ namespace N_Store.Infrastructure.Repositories
                 }
 
 
-          
+
 
                 //remove old picture
                 if (!string.IsNullOrEmpty(currentProduct.ProductPicture))
@@ -125,6 +151,6 @@ namespace N_Store.Infrastructure.Repositories
             return false;
         }
 
-        
+
     }
 }
