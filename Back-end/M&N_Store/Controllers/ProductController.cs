@@ -70,7 +70,7 @@ namespace M_N_Store.Controllers
                 if(ModelState.IsValid)
                 {
                     var res = await _uOW.ProductRepository.UpdateAsync(id, productdto);
-                    return res ? Ok(res) : BadRequest(productdto);
+                    return res ? Ok(res) : BadRequest();
                 }
                 return BadRequest(productdto);
             }

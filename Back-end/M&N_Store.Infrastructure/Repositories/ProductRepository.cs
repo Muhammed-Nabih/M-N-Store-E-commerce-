@@ -117,9 +117,6 @@ namespace N_Store.Infrastructure.Repositories
                     await dto.Image.CopyToAsync(fileStream);
                 }
 
-
-
-
                 //remove old picture
                 if (!string.IsNullOrEmpty(currentProduct.ProductPicture))
                 {
