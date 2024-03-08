@@ -3,10 +3,8 @@
     <section class="col-3">
       <ul class="list-group">
         <h6 class="text-primary my-3" style="font-weight: bold;">Sorting</h6>
-        <select class="form-select" aria-label="Default select example">
-          <option value="1">Name</option>
-          <option value="2">Price : Max-Min</option>
-          <option value="3">Price : Min-Max</option>
+        <select class="form-select" aria-label="Default select example" (change)="onSortSelect($event)">
+          <option *ngFor="let item of sortOptions" [value]="item.value">{{item.name}}</option>
         </select>
 
         <h6 class="text-primary my-3" style="font-weight: bold;">Category</h6>

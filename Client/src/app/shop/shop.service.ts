@@ -11,10 +11,13 @@ export class ShopService {
   baseURL = "https://localhost:44335/api/";
   constructor(private http: HttpClient) { }
 
-  getProduct(categoryId?:number) {
+  getProduct(categoryId?:number ,sort?:string) {
     let params = new HttpParams();
     if(categoryId) {
       params = params.append('categoryId',categoryId.toString());
+    }
+    if(sort){
+      params = params.append('sort',sort);
     }
     return this.http.get<IPagniation>(this.baseURL + 'Product/get-all-products',{observe:'response',params})
     .pipe(
