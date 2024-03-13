@@ -25,9 +25,9 @@
             ></app-paging-header>
         <div class="col-9">
           <div class="input-group">
-            <input class="form-control mr-2" type="text" placeholder="Search Here...">
-            <button class="btn btn-outline-success">Search</button>
-            <button class="btn btn-outline-warning">Reset</button>
+            <input (keyup.enter)="onSearch()" class="form-control mr-2" type="text" #search placeholder="Search Here...">
+            <button class="btn btn-outline-success" (click)="onSearch()">Search</button>
+            <button class="btn btn-outline-warning" (click)="onRest()">Reset</button>
           </div> 
         </div>
       </div>
