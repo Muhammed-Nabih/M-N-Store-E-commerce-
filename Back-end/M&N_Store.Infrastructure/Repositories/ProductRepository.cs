@@ -31,8 +31,9 @@ namespace N_Store.Infrastructure.Repositories
 
         }
 
-        public async Task<IEnumerable<ProductDto>> GetAllAsync(ProductParams productParams)
+        public async Task<ReturnProductDto> GetAllAsync(ProductParams productParams)
         {
+            var result_ = new ReturnProductDto();
             var query = await _context.Products
                 .Include(x=>x.Category)
                 .AsNoTracking()
@@ -57,13 +58,13 @@ namespace N_Store.Infrastructure.Repositories
                     _ => query.OrderBy(x => x.Name).ToList(),
                 };
             }
-
+            result_.TotalItems = query.Count;
             //Paging
             query = query.Skip((productParams.PageSize) * (productParams.PageNumber - 1)).Take(productParams.PageSize).ToList();
 
 
-            var _result = _mapper.Map<List<ProductDto>>(query);
-            return _result;
+            result_.ProductDtos = _mapper.Map<List<ProductDto>>(query);
+            return result_;
         }
 
         /************************************************* ADD IMAGE ****************************************************/

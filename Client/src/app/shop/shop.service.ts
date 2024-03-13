@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { IPagniation } from '../shared/Models/Pagniation';
 import { ICategory } from '../shared/Models/Category';
 import { map } from 'rxjs';
+import { ShopParams } from '../shared/Models/shopParams';
 
 @Injectable({
   providedIn: 'root'
@@ -11,20 +12,23 @@ export class ShopService {
   baseURL = "https://localhost:44335/api/";
   constructor(private http: HttpClient) { }
 
-  getProduct(categoryId?:number ,sort?:string) {
+  getProduct(shopParams: ShopParams) {
     let params = new HttpParams();
-    if(categoryId) {
-      params = params.append('categoryId',categoryId.toString());
+    if (shopParams.categoryId !== 0) {
+      params = params.append('categoryId', shopParams.categoryId.toString());
     }
-    if(sort){
-      params = params.append('sort',sort);
-    }
-    return this.http.get<IPagniation>(this.baseURL + 'Product/get-all-products',{observe:'response',params})
-    .pipe(
-      map(response=>{
-        return response.body;
-      })
-    )
+
+    params = params.append('sort', shopParams.sort);
+
+    params = params.append('pageNumber', shopParams.pageNumber.toString());
+    params = params.append('pageSize', shopParams.pageSize.toString());
+
+    return this.http.get<IPagniation>(this.baseURL + 'Product/get-all-products', { observe: 'response', params })
+      .pipe(
+        map(response => {
+          return response.body;
+        })
+      )
 
   }
 
@@ -32,6 +36,6 @@ export class ShopService {
     return this.http.get<ICategory[]>(this.baseURL + 'Categories/get-all-categories');
   }
 
-  
+
 
 }
