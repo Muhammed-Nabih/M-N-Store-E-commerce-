@@ -11,3 +11,11 @@
     top: 13px;
     right: 283px;
 }
+
+.nav-link{
+    color: rgb(0, 217, 255);
+
+    &.active{
+        color: rgb(0, 0, 233);
+    }
+}
