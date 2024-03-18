@@ -4,6 +4,7 @@ using M_N_Store.Middleware;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
 using N_Store.Infrastructure;
+using StackExchange.Redis;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,13 @@ builder.Services.AddApiRegistration();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.InfrastructureConfiguration(builder.Configuration);
+
+//Configure Redis
+builder.Services.AddSingleton<IConnectionMultiplexer>(i =>
+{
+    var configure = ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("Redis"), true);
+    return ConnectionMultiplexer.Connect(configure);
+});
 
 
 var app = builder.Build();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using M_N_Store.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace N_Store.Domain.Interfaces
     {
         public ICategoryRepository CategoryRepository { get;  }
         public IProductRepository ProductRepository { get;  }
+        public IBasketRepository BasketRepository { get;  }
 
     }
 }
