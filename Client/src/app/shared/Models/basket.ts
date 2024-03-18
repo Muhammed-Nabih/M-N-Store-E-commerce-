@@ -1,4 +1,4 @@
-import { uuid } from "angular-uuid"
+import {v4 as uuid } from "uuid";
 export interface IBasket {
     id: string;
     basketItems: IBasketItem[];
@@ -14,6 +14,13 @@ export interface IBasketItem {
 }
 
 export class Basket implements IBasket {
-    id : uuid.v4;
-    basketItems: IBasketItem[];
+    id= uuid();
+    basketItems: IBasketItem[]=[];
+
+}
+
+export interface IBasketTotals{
+    shipping:number;
+    subtotal:number;
+    total:number;
 }

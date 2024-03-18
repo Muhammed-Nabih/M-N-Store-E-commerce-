@@ -23,8 +23,8 @@
             [pageSize] = "shopParams.pageSize"
             [pageNumber] = "shopParams.pageNumber"
             ></app-paging-header>
-        <div class="col-9" *ngIf="products">
-          <div class="input-group">
+            <div class="col-9" *ngIf="products">
+              <div class="input-group">
             <input class="form-control mr-2" type="text" #search placeholder="Search Here...">
             <button class="btn btn-outline-success" (click)="onSearch()">Search</button>
             <button class="btn btn-outline-warning" (click)="onRest()">Reset</button>
@@ -35,7 +35,7 @@
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col" *ngFor="let item of products">
-          <app-shop-item [producut]="item"> </app-shop-item>
+          <app-shop-item [product]="item"> </app-shop-item>
         </div>
       </div>
 

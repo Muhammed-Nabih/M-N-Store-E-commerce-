@@ -28,12 +28,12 @@ import { BreadcrumbModule } from 'xng-breadcrumb';
         countDuplicates:true,
         preventDuplicates:true
       }
-    ),
-    BreadcrumbModule
+      ),
+      BreadcrumbModule
   ],
   exports:[
     NavBarComponent,
-    SectionHeaderComponent
+    SectionHeaderComponent,
   ]
 })
 export class CoreModule { }

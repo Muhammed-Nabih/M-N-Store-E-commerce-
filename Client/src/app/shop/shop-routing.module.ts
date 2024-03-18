@@ -7,7 +7,7 @@ import { ShopComponent } from './shop.component';
 const routes: Routes = [
 
   {path:'', component:ShopComponent},
-  {path:':id', component:ProductDetailsComponent,data:{breadcrumb:{alis:'productDetails'}}}
+  {path:':id',component:ProductDetailsComponent,data:{breadcrumb:{alias:'productDetails'}}}
 
 
 ];
@@ -20,7 +20,7 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   exports:[
-    RouterModule
+    RouterModule,
   ]
 })
 export class ShopRoutingModule { }

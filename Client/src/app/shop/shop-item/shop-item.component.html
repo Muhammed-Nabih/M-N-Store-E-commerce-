@@ -1,17 +1,16 @@
 <div class="card h-100 shadow-sm">
-    <img src="{{producut.productPicture}}" alt="{{producut.name}}" style = "height: 300px " >
+    <img src="{{product.productPicture}}" alt="{{product.name}}" style = "height: 300px " >
     <div class="card-body ">
-        <a routerLink="/shop/{{producut.id}}">
-            <p class="text-uppercase">{{producut.name}}</p>
+        <a routerLink="/shop/{{product.id}}">
+            <p class="text-uppercase">{{product.name}}</p>
         </a>
-        <span>{{producut.price | currency}}</span>
+        <span>{{product.price | currency}}</span>
         
         <div class="">
             <div class="btn-group mt-2">
-                <button type="button" class="btn btn-outline-success fa fa-shopping-cart"></button>
-                <button type="button" routerLink="/shop/{{producut.id}}" routerLinkActive="router-link-active"  class="btn btn-outline-primary">View</button>
+                <button (click)="addItemToBasket()" type="button" class="btn btn-outline-danger fa fa-shopping-cart"></button>
+                <button type="button" routerLink="/shop/{{product.id}}" routerLinkActive="router-link-active"  class="btn btn-outline-primary">View</button>
             </div>
-
         </div>
     </div>
 </div>
