@@ -1,0 +1,44 @@
+<div class="text-center">
+
+    <main class="form-signin">
+        <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
+            <!-- <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+            <h1 class="h3 mb-3 fw-normal">Login</h1>
+
+            <div class="form-floating">
+                <input type="email" formControlName="email" class="form-control" placeholder="name@example.com"
+                    [class.is-invalid]="_email.invalid && _email.touched"
+                    [class.is-valid]="_email.valid"
+                    >
+                    <div *ngIf="_email.invalid && _email.touched">
+                        <small class="text-danger" style="font-weight: bold;" *ngIf="_email?.errors?.['required']">* Reqired Email !</small>
+                        <small class="text-danger" style="font-weight: bold;" *ngIf="_email?.errors?.['pattern']" >*Invalid Email Pattern!</small>
+
+                    </div>
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" formControlName="password" class="form-control" 
+                    placeholder="Password"
+                    [class.is-invalid]="_password.invalid && _password.touched"
+                    [class.is-valid]="_password.valid"
+                    >
+                <label for="floatingPassword">Password</label>
+                <small class="text-danger" style="font-weight: bold;" [class.d-none]="_password.valid || _password.untouched"> * Password Required !</small>
+            </div>
+
+            <!-- <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div> -->
+            <button class="w-100 btn btn-lg btn-danger" type="submit"[disabled]="loginForm.invalid">Login</button>
+            <!-- <p class="mt-5 mb-3 text-muted">© 2023-2024</p> -->
+        </form>
+    </main>
+
+
+
+
+
+</div>
