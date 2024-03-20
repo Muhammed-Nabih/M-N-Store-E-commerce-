@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using M_N_Store.Domain.Dtos;
 using M_N_Store.Domain.Entities;
-using M_N_Store.Domain.Interfaces;
+using M_N_Store.Domain.Services;
 using M_N_Store.Errors;
 using M_N_Store.Extension;
 using Microsoft.AspNetCore.Authorization;

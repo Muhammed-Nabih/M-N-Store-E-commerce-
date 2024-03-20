@@ -3,7 +3,6 @@ using N_Store.Domain.Interfaces;
 using N_Store.Infrastructure.Data;
 using M_N_Store.Infrastructure.Data.Config;
 using N_Store.Infrastructure.Repositories;
-using M_N_Store.Domain.Interfaces;
 using M_N_Store.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -19,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using M_N_Store.Domain.Services;
 
 namespace N_Store.Infrastructure
 {

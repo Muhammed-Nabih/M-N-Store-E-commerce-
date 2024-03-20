@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M_N_Store.Domain.Interfaces
+namespace M_N_Store.Domain.Services
 {
     public interface ITokenServices
     {

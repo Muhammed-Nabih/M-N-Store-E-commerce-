@@ -1,4 +1,5 @@
 using M_N_Store.Domain.Interfaces;
+using M_N_Store.Domain.Services;
 using M_N_Store.Errors;
 using M_N_Store.Extension;
 using M_N_Store.Infrastructure.Repositories;
@@ -46,6 +47,13 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(i =>
     var configure = ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("Redis"), true);
     return ConnectionMultiplexer.Connect(configure);
 });
+
+
+//configure order Services
+builder.Services.AddScoped<IOrderServices, OrderServices>();
+
+
+
 
 //Configure Tokens Services
 
