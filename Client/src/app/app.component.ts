@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
     // if (token) {
 
       this.accountServices.loadCurrentUser(token).subscribe({
-        next: () => { console.log('loadded User Succeffully') },
+        next: () => { console.log('loaded User Successfully') },
         error: (err) => { console.log(err) }
       })
     // }

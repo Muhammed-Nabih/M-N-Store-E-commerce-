@@ -25,12 +25,12 @@ export class CheckoutPaymentComponent implements OnInit {
     const orderToCreate = this.getOrderToCreate(basket);
     this.checkoutServices.createOrder(orderToCreate).subscribe({
       next:((order:IOrder)=>{
-        this.toastr.success('Order Submit Succssfully!');
+        this.toastr.success('Order Submitted Succssfully!');
         this.basketServices.deleteLocalBasekt(basket.id);
         const navigationExtras:NavigationExtras = {state:order}
         this.router.navigate(['checkout/success'],navigationExtras)
       }),
-      error:((err)=>{this.toastr.error(err.message);console.error(err)})
+      error:((err)=>{this.toastr.error('Error on Submitting Order');console.error(err)})
     })
   }
   private getOrderToCreate(basket: IBasket) {

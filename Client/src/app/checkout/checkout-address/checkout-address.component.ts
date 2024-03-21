@@ -17,8 +17,8 @@ export class CheckoutAddressComponent implements OnInit {
   saveUserAddress(){
     let _currentAddress = this.checkoutForm.get('addressForm').value;
     this.accountService.updateUserAddress(_currentAddress).subscribe({
-      next:(()=>{this.toastr.success('UPdated Successfully')}),
-      error:((err)=>{this.toastr.error(err.message)})
+      next:(()=>{this.toastr.success('Updated Successfully')}),
+      error:((err)=>{this.toastr.error('Error on Saving')})
     })
   }
   get _firstName() {
