@@ -1,0 +1,1156 @@
+{
+	"info": {
+		"_postman_id": "76e47abe-89e1-4555-a873-4841b1f7d8fe",
+		"name": "M&N-Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26488282"
+	},
+	"item": [
+		{
+			"name": "Section Two",
+			"item": [
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Categories/get-all-categories",
+							"host": [
+								"{{url}}Categories"
+							],
+							"path": [
+								"get-all-categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Categories/get-category-by-id/4",
+							"host": [
+								"{{url}}Categories"
+							],
+							"path": [
+								"get-category-by-id",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add New Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Stand\",\r\n  \"description\": \"Stands\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}Categories/add-new-category",
+							"host": [
+								"{{url}}Categories"
+							],
+							"path": [
+								"add-new-category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category By id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Categories/delete-category-by-id/8",
+							"host": [
+								"{{url}}Categories"
+							],
+							"path": [
+								"delete-category-by-id",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category By Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 12,\r\n  \"name\": \"Stands\",\r\n  \"description\": \"Stands\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}Categories/update-existing-category-by-id",
+							"host": [
+								"{{url}}Categories"
+							],
+							"path": [
+								"update-existing-category-by-id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Product/get-all-products",
+							"host": [
+								"{{url}}Product"
+							],
+							"path": [
+								"get-all-products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Product/get-product-by-id/1",
+							"host": [
+								"{{url}}Product"
+							],
+							"path": [
+								"get-product-by-id",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add New Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Nirvana - T-Shirt",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Summer Shirt for Nirvana ",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "29.99",
+									"type": "text"
+								},
+								{
+									"key": "categoryId",
+									"value": "9",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/moham/OneDrive/Pictures/Screenshots/99999.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}Product/add-new-product",
+							"host": [
+								"{{url}}Product"
+							],
+							"path": [
+								"add-new-product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Product/delete-existing-product/27",
+							"host": [
+								"{{url}}Product"
+							],
+							"path": [
+								"delete-existing-product",
+								"27"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product By Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Id",
+									"value": "8",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Marvel - T-Shirt",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Summer Shirt for Marvel ",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "20.99",
+									"type": "text"
+								},
+								{
+									"key": "categoryId",
+									"value": "9",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/moham/OneDrive/Pictures/Screenshots/1000.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}Product/update-existing-product/29",
+							"host": [
+								"{{url}}Product"
+							],
+							"path": [
+								"update-existing-product",
+								"29"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Section Three",
+			"item": [
+				{
+					"name": "Not Found Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Bug/not-found",
+							"host": [
+								"{{url}}Bug"
+							],
+							"path": [
+								"not-found"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Null Ref Error",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Bug/server-error",
+							"host": [
+								"{{url}}Bug"
+							],
+							"path": [
+								"server-error"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "400 Error",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Bug/bad-request",
+							"host": [
+								"{{url}}Bug"
+							],
+							"path": [
+								"bad-request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "400 Validation Error",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Bug/bad-request/three",
+							"host": [
+								"{{url}}Bug"
+							],
+							"path": [
+								"bad-request",
+								"three"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EndPoint Not Found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Bug/tests",
+							"host": [
+								"{{url}}Bug"
+							],
+							"path": [
+								"tests"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Paging,Sorting,Filtering",
+			"item": [
+				{
+					"name": "Get Product Sorted By Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Product/get-all-products?sort=name",
+							"host": [
+								"{{url}}Product"
+							],
+							"path": [
+								"get-all-products"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "name"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product Sorted By Price Asc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Product/get-all-products?sort=PriceAsc",
+							"host": [
+								"{{url}}Product"
+							],
+							"path": [
+								"get-all-products"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "PriceAsc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product Sorted By Price Desc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Product/get-all-products?sort=PriceDesc",
+							"host": [
+								"{{url}}Product"
+							],
+							"path": [
+								"get-all-products"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "PriceDesc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product Sorted By Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Product/get-all-products?categoryId=3",
+							"host": [
+								"{{url}}Product"
+							],
+							"path": [
+								"get-all-products"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Paged Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Product/get-all-products?pageNumber=1&pageSize=3",
+							"host": [
+								"{{url}}Product"
+							],
+							"path": [
+								"get-all-products"
+							],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search in Product By Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Product/get-all-products?search=Ahmed",
+							"host": [
+								"{{url}}Product"
+							],
+							"path": [
+								"get-all-products"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Ahmed"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apply [Filtering-Sorting-Pagination]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Product/get-all-products?pageNumber=2&PageSize=4&sort=PriceDesc",
+							"host": [
+								"{{url}}Product"
+							],
+							"path": [
+								"get-all-products"
+							],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "2"
+								},
+								{
+									"key": "PageSize",
+									"value": "4"
+								},
+								{
+									"key": "sort",
+									"value": "PriceDesc"
+								},
+								{
+									"key": "search",
+									"value": "Ahmed",
+									"disabled": true
+								},
+								{
+									"key": "categoryId",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check CORS is Enable",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Origin",
+								"value": "http://localhost:4200",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}Product/get-all-products?search=Ahmed",
+							"host": [
+								"{{url}}Product"
+							],
+							"path": [
+								"get-all-products"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Ahmed"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Basket",
+			"item": [
+				{
+					"name": "Get Basket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLm5hYmloNjhAZ21haWwuY29tIiwiZ2l2ZW5fbmFtZSI6Ik5hYmloIiwibmJmIjoxNzEwOTE4MjIxLCJleHAiOjE3MTE3ODIyMjEsImlhdCI6MTcxMDkxODIyMSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzMzUvIn0.GWmfFgHNVz8hvlyPWWDbmgOeny2KfCBKbGUYSXoUELk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Basket/get-basket-item/basket1",
+							"host": [
+								"{{url}}Basket"
+							],
+							"path": [
+								"get-basket-item",
+								"basket1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Basket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLm5hYmloNjhAZ21haWwuY29tIiwiZ2l2ZW5fbmFtZSI6Ik5hYmloIiwibmJmIjoxNzEwOTEyMzE2LCJleHAiOjE3MTE3NzYzMTYsImlhdCI6MTcxMDkxMjMxNiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzMzUvIn0.EV3k-_tFSM_J3ewf86F1EImxxVSiIPMwStEDegpffV0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"basket1\",\r\n    \"basketItems\" : [\r\n        {\r\n            \"id\": \"1\",\r\n            \"productName\": \"Cairokee - T-Shirt\",\r\n            \"price\": \"42.99\",\r\n            \"quantity\": \"3\",\r\n            \"productPicture\": \"https://localhost:44335//images/products87eb8c8a-61aa-46c8-8439-2af24f7eb1ca8888888888.png\",\r\n            \"category\": \"Shirts\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}Basket/update-basket",
+							"host": [
+								"{{url}}Basket"
+							],
+							"path": [
+								"update-basket"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Basket",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Basket/delete-basket-item/basket1",
+							"host": [
+								"{{url}}Basket"
+							],
+							"path": [
+								"delete-basket-item",
+								"basket1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Identity Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"Mohammed.nabih68@gmail.com\",\r\n    \"password\" : \"P@$$w0rd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}Account/Login",
+							"host": [
+								"{{url}}Account"
+							],
+							"path": [
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test Authoraize",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLm5hYmloNjhAZ21haWwuY29tIiwiZ2l2ZW5fbmFtZSI6Ik5hYmloIiwibmJmIjoxNzEwODI0NDY5LCJleHAiOjE3MTE2ODg0NjksImlhdCI6MTcxMDgyNDQ2OSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzMzUvIn0.9b5N3nVKFffCnZg9XunL5x0ok7s3AfVbdxIPpN361IM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Account/test",
+							"host": [
+								"{{url}}Account"
+							],
+							"path": [
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"email\": \"Mohamed@gmail.com\",\r\n    \"displayName\": \"Mohamed\",\r\n    \"password\": \"P@$$w0rd\"\r\n }   ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}Account/Register",
+							"host": [
+								"{{url}}Account"
+							],
+							"path": [
+								"Register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IlRoaXJkQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJ0aHJlZSIsIm5iZiI6MTcxMDgyNTI5MiwiZXhwIjoxNzExNjg5MjkyLCJpYXQiOjE3MTA4MjUyOTIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzM1LyJ9.gXZLvIn6-R1JcTzbG15zuowi5BGtEdFlSfROF94EReU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer{{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}Account/get-current-user",
+							"host": [
+								"{{url}}Account"
+							],
+							"path": [
+								"get-current-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Email Exist",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}Account/check-email-exist?email=Mohamed@gmail.com",
+							"host": [
+								"{{url}}Account"
+							],
+							"path": [
+								"check-email-exist"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "Mohamed@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLm5hYmloNjhAZ21haWwuY29tIiwiZ2l2ZW5fbmFtZSI6Ik5hYmloIiwibmJmIjoxNzEwODI1ODM2LCJleHAiOjE3MTE2ODk4MzYsImlhdCI6MTcxMDgyNTgzNiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzMzUvIn0.NbyuzvGX1icfHxCjLiX3d5X35JjeBFAk0cAa7tFZmI8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}Account/get-user-address",
+							"host": [
+								"{{url}}Account"
+							],
+							"path": [
+								"get-user-address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IlRoaXJkQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJ0aHJlZSIsIm5iZiI6MTcxMDgyNTI5MiwiZXhwIjoxNzExNjg5MjkyLCJpYXQiOjE3MTA4MjUyOTIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzM1LyJ9.gXZLvIn6-R1JcTzbG15zuowi5BGtEdFlSfROF94EReU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"Medo\",\r\n  \"lastName\": \"AbYusif\",\r\n  \"street\": \"Saad Zaghlol\",\r\n  \"city\": \"Cairo\",\r\n  \"state\": \"El horya\",\r\n  \"zipCode\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}Account/update-user-address",
+							"host": [
+								"{{url}}Account"
+							],
+							"path": [
+								"update-user-address"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Update Basket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLm5hYmloNjhAZ21haWwuY29tIiwiZ2l2ZW5fbmFtZSI6Ik5hYmloIiwibmJmIjoxNzEwOTEyNjg4LCJleHAiOjE3MTE3NzY2ODgsImlhdCI6MTcxMDkxMjY4OCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzMzUvIn0.zBZErcPblwFIuJ4qGXjEuifTP3cqOHGYd7k4DpVJPOY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"basket3\",\r\n    \"basketItems\" : [\r\n        {\r\n            \"id\": \"1\",\r\n            \"productName\": \"Cairokee - T-Shirt\",\r\n            \"price\": \"42.99\",\r\n            \"quantity\": \"7\",\r\n            \"productPicture\": \"https://localhost:44335//images/products87eb8c8a-61aa-46c8-8439-2af24f7eb1ca8888888888.png\",\r\n            \"category\": \"Shirts\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}Basket/update-basket",
+							"host": [
+								"{{url}}Basket"
+							],
+							"path": [
+								"update-basket"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check out as all basket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLm5hYmloNjhAZ21haWwuY29tIiwiZ2l2ZW5fbmFtZSI6Ik5hYmloIiwibmJmIjoxNzEwOTEyNjg4LCJleHAiOjE3MTE3NzY2ODgsImlhdCI6MTcxMDkxMjY4OCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzMzUvIn0.zBZErcPblwFIuJ4qGXjEuifTP3cqOHGYd7k4DpVJPOY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"basketId\": \"9d1d1b05-5927-4b8d-a67e-ba879ec02c2b\",\r\n  \"deliveryMethodId\": 2,\r\n  \"shipToAddress\": {\r\n    \"firstName\": \"Muhammad\",\r\n    \"lastName\": \"Nabih\",\r\n    \"street\": \"Street 3\",\r\n    \"city\": \"Cairo\",\r\n    \"state\": \"15 Mayo City\",\r\n    \"zipCode\": \"682002\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}Orders/create-order",
+							"host": [
+								"{{url}}Orders"
+							],
+							"path": [
+								"create-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Orders for User All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLm5hYmloNjhAZ21haWwuY29tIiwiZ2l2ZW5fbmFtZSI6Ik5hYmloIiwibmJmIjoxNzEwOTE4MjIxLCJleHAiOjE3MTE3ODIyMjEsImlhdCI6MTcxMDkxODIyMSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzMzUvIn0.GWmfFgHNVz8hvlyPWWDbmgOeny2KfCBKbGUYSXoUELk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}Orders/get-orders-for-user",
+							"host": [
+								"{{url}}Orders"
+							],
+							"path": [
+								"get-orders-for-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order for User All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLm5hYmloNjhAZ21haWwuY29tIiwiZ2l2ZW5fbmFtZSI6Ik5hYmloIiwibmJmIjoxNzEwOTIzMTk0LCJleHAiOjE3MTE3ODcxOTQsImlhdCI6MTcxMDkyMzE5NCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzMzUvIn0.NcMrKqOr1X20hNU4GPX1vC5DREpsPZ8KGnvVTNRGUYg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}Orders/get-order-by-id/4",
+							"host": [
+								"{{url}}Orders"
+							],
+							"path": [
+								"get-order-by-id",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Delivery Mthods",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLm5hYmloNjhAZ21haWwuY29tIiwiZ2l2ZW5fbmFtZSI6Ik5hYmloIiwibmJmIjoxNzEwOTE4MjIxLCJleHAiOjE3MTE3ODIyMjEsImlhdCI6MTcxMDkxODIyMSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzMzUvIn0.GWmfFgHNVz8hvlyPWWDbmgOeny2KfCBKbGUYSXoUELk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}Orders/get-delivery-methods",
+							"host": [
+								"{{url}}Orders"
+							],
+							"path": [
+								"get-delivery-methods"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "Creat Payment Intent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLm5hYmloNjhAZ21haWwuY29tIiwiZ2l2ZW5fbmFtZSI6Ik5hYmloIiwibmJmIjoxNzEwOTkwNzc2LCJleHAiOjE3MTE4NTQ3NzYsImlhdCI6MTcxMDk5MDc3NiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzMzUvIn0.RLDmDurm8HjHJNlNFz6vkqifDXVVkvaIsI9iK_Hip90",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}Payments/basket1",
+							"host": [
+								"{{url}}Payments"
+							],
+							"path": [
+								"basket1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://localhost:44335/api/",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IlRoaXJkQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJ0aHJlZSIsIm5iZiI6MTcxMDgyNTI5MiwiZXhwIjoxNzExNjg5MjkyLCJpYXQiOjE3MTA4MjUyOTIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzM1LyJ9.gXZLvIn6-R1JcTzbG15zuowi5BGtEdFlSfROF94EReU",
+			"type": "string"
+		}
+	]
+}
