@@ -28,7 +28,7 @@ namespace M_N_Store.Controllers
         }
 
         [HttpPost("create-order")]
-        public async Task<IActionResult> CreateOrder(OrderDto orderdto)
+        public async Task<ActionResult<Order>> CreateOrder(OrderDto orderdto)
         {
             var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
 
@@ -42,7 +42,7 @@ namespace M_N_Store.Controllers
 
         }
         [HttpGet("get-orders-for-user")]
-        public async Task<IActionResult> GetOrdersForUser()
+        public async Task<ActionResult<IReadOnlyList<OrderToReturnDto>>> GetOrdersForUser()
         {
             var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
             var order = await _orderServices.GetOrdersForUserAsync(email);
@@ -50,7 +50,7 @@ namespace M_N_Store.Controllers
             return Ok(result);
         }
         [HttpGet("get-order-by-id/{id}")]
-        public async Task<IActionResult> GetOrderById(int id)
+        public async Task<ActionResult<OrderToReturnDto>> GetOrderById(int id)
         {
             var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
             var order = await _orderServices.GetOrderByIdAsync(id, email);

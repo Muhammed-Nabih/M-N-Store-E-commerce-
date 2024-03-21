@@ -1,11 +1,42 @@
+<div class="mt-5" [formGroup]="checkoutForm">
+    <div class="row">
+        <div class="form-group col-12 mb-2" formGroupName="paymentForm">
+            <div class="form-floating">
+                <input type="text" formControlName="nameOnCard" class="form-control" placeholder="name On card"
+                    [class.is-invalid]="checkoutForm.get('paymentForm.nameOnCard').invalid && checkoutForm.get('paymentForm.nameOnCard').touched"
+                    [class.is-valid]="checkoutForm.get('paymentForm.nameOnCard').valid">
+                <small class="text-danger" style="font-weight: bold;"
+                    [class.d-none]="checkoutForm.get('paymentForm.nameOnCard').valid || checkoutForm.get('paymentForm.nameOnCard').untouched">
+                    * Name on Card Required !</small>
+
+                <label>Name on Card</label>
+            </div>
+        </div>
+        <div class="form-group col-6">
+            <div #cardNumber class="form-control py-3"></div>
+            <small *ngIf="cardErrors" class="text-danger" style="font-weight: bold;"> * {{cardErrors}} !</small>
+        </div>
+        <div class="form-group col-3">
+            <div #cardExpiry class="form-control py-3"></div>
+        </div>
+        <div class="form-group col-3">
+            <div #cardCvc class="form-control py-3"></div>
+        </div>
+    </div>
+</div>
 
 <h4 class="mt-5 my-5 mr-5 " style="color: rgb(218, 65, 65); padding-left: 10px;">Are you Sure That you Want to Submit Order ?</h4>
 
 <div class="float-none d-flex justify-content-between flex-column flex-lg-row my-3">
-    <button class="btn btn-outline-danger" cdkStepperPrevious >
+    <button class="btn btn-outline-danger" cdkStepperPrevious>
         <i class="fa fa-angle-left mr-2"> Back to Review</i>
     </button>
-    <button (click)="submitOrder()" class="btn btn-danger" cdkStepperNext>
-        Submit Order 
+    <button [disabled]="loading || checkoutForm.get('paymentForm').invalid ||
+    !cardNumberValid ||
+    !cardExpiryValid ||
+    !cardCvcValid
+    " (click)="submitOrder()" class="btn btn-danger" cdkStepperNext>
+        Submit Order
+        <i *ngIf="loading" class="fa fa-spinner fa-spin" style="color: black"></i>
     </button>
 </div>

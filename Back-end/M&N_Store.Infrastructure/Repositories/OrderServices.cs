@@ -17,11 +17,14 @@ namespace M_N_Store.Infrastructure.Repositories
     {
         private readonly IUnitOfWork _uOW;
         private readonly ApplicationDbContext _context;
+        private readonly IPaymentServices _paymentServices;
 
-        public OrderServices(IUnitOfWork UOW, ApplicationDbContext context)
+        public OrderServices(IUnitOfWork UOW, ApplicationDbContext context, IPaymentServices paymentServices)
         {
             _uOW = UOW;
             _context = context;
+            _paymentServices = paymentServices;
+
         }
         public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string basketId, ShipAddress shipAddress)
         {
@@ -30,7 +33,7 @@ namespace M_N_Store.Infrastructure.Repositories
             var items = new List<OrderItem>();
 
             //fill item
-            
+
 
             foreach (var item in basket.BasketItems)
             {
@@ -41,29 +44,27 @@ namespace M_N_Store.Infrastructure.Repositories
                 items.Add(orderItem);
             }
 
-            //Parallel.ForEach(basket.BasketItems, item =>
-            //{
-            //    var productItem = _uOW.ProductRepository.GetByIdAsync(item.Id).GetAwaiter().GetResult();
-            //    var productItemOrderd = new ProductItemOrderd(productItem.Id, productItem.Name, productItem.ProductPicture);
-            //    var orderItem = new OrderItem(productItemOrderd, item.Price, item.Quantity);
-            //    lock (items)
-            //    {
-            //        items.Add(orderItem);
-            //    }
-            //});
             await _context.OrderItems.AddRangeAsync(items);
             await _context.SaveChangesAsync();
 
             //get delivery method
             var deliveryMethod = await _context.DeliveryMethods.Where(x => x.Id == deliveryMethodId)
                                 .FirstOrDefaultAsync();
-
             //calculate Subtotal
 
             var subTotal = items.Sum(x => x.Price * x.Quantity);
 
+            //ceck if order exisit
+            var exitingOrder = await _context.Orders.Where(x => x.PaymentIntentId == basket.PaymentIntentId).FirstOrDefaultAsync();
+
+            if (exitingOrder is not null)
+            {
+                _context.Orders.Remove(exitingOrder);
+                await _paymentServices.CreateOrUpdatePayment(basket.PaymentIntentId);
+            }
+
             //initilaize on Ctor
-            var order = new Order(buyerEmail, shipAddress, deliveryMethod, items, subTotal);
+            var order = new Order(buyerEmail, shipAddress, deliveryMethod, items, subTotal, basket.PaymentIntentId);
 
             //check order is not null
             if (order is null) return null;
@@ -73,15 +74,13 @@ namespace M_N_Store.Infrastructure.Repositories
             await _context.SaveChangesAsync();
 
             //remove Basket
-            await _uOW.BasketRepository.DeleteBasketAsync(basketId);
+            //await _uOW.BasketRepository.DeleteBasketAsync(basketId);
 
             return order;
         }
 
         public async Task<IReadOnlyList<DeliveryMethod>> GetDeliveryMethodsAsync()
             => await _context.DeliveryMethods.ToListAsync();
-
-
         public async Task<Order> GetOrderByIdAsync(int id, string buyerEmail)
         {
             var order = await _context.Orders
@@ -90,10 +89,8 @@ namespace M_N_Store.Infrastructure.Repositories
                     .Include(x => x.DeliveryMethod)
                     .OrderByDescending(x => x.OrderDate)
                     .FirstOrDefaultAsync();
-
             return order;
         }
-
         public async Task<IReadOnlyList<Order>> GetOrdersForUserAsync(string buyerEmail)
         {
             var order = await _context.Orders
@@ -102,7 +99,6 @@ namespace M_N_Store.Infrastructure.Repositories
                     .Include(x => x.DeliveryMethod)
                     .OrderByDescending(x => x.OrderDate)
                     .ToListAsync();
-
             return order;
         }
     }

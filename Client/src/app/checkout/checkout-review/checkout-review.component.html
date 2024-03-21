@@ -7,7 +7,7 @@
     <button class="btn btn-outline-danger" cdkStepperPrevious >
         <i class="fa fa-angle-left mr-2"> Back to Delivery</i>
     </button>
-    <button class="btn btn-danger" cdkStepperNext>
+    <button class="btn btn-danger" (click)="createPaymentIntent()">
         Go to Payment <i class="fa fa-angle-right"></i>
     </button>
 </div>

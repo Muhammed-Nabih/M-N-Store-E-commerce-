@@ -26,6 +26,7 @@ namespace N_Store.Infrastructure
     {
         public static IServiceCollection InfrastructureConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
+            //configure Token Services
             services.AddScoped<ITokenServices, TokenServices>();
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));

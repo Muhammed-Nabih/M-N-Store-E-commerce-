@@ -9,6 +9,7 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
 using N_Store.Infrastructure;
 using StackExchange.Redis;
+using Stripe;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -52,8 +53,8 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(i =>
 //configure order Services
 builder.Services.AddScoped<IOrderServices, OrderServices>();
 
-
-
+//configure payment getway
+builder.Services.AddScoped<IPaymentServices, PaymentServices>();
 
 //Configure Tokens Services
 
