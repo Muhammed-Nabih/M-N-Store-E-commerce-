@@ -59,7 +59,7 @@ namespace M_N_Store.Controllers
             return Ok(result);
         }
         [HttpGet("get-delivery-methods")]
-        public async Task<IActionResult> GetDeliveryMethods()
+        public async Task<ActionResult<IReadOnlyList<DeliveryMethod>>> GetDeliveryMethods()
         {
             return Ok(await _orderServices.GetDeliveryMethodsAsync());
         }

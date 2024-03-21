@@ -7,6 +7,11 @@ import { PagerComponent } from './Components/pager/pager.component';
 import { OrderTotalsComponent } from './Components/order-totals/order-totals.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CdkStepperModule } from '@angular/cdk/stepper';
+import { StepperComponent } from './Components/stepper/stepper.component';
+import { BasketSummeryComponent } from './Components/basket-summery/basket-summery.component';
+import { CheckoutSuccessComponent } from './Components/checkout-success/checkout-success.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -14,8 +19,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     PagingHeaderComponent,
     PagerComponent,
     OrderTotalsComponent,
-    PagerComponent,
-    OrderTotalsComponent
+    StepperComponent,
+    BasketSummeryComponent,
+    CheckoutSuccessComponent   
   ],
   imports: [
     CommonModule,
@@ -23,7 +29,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     CarouselModule.forRoot(),
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
-    
+    CdkStepperModule,
+    RouterModule
   ],
   exports:[
     PaginationModule,
@@ -32,7 +39,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     CarouselModule,
     OrderTotalsComponent,
     ReactiveFormsModule,
-    BsDropdownModule
+    BsDropdownModule,
+    CdkStepperModule,
+    StepperComponent,
+    BasketSummeryComponent
   ]
 })
 export class SharedModule { }

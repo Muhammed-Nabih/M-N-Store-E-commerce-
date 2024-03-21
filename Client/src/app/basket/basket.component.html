@@ -1,64 +1,12 @@
 <div *ngIf="(basket$ |async) === null">
     <h3 class="text-center text-danger">There is no Items added yet!</h3>
 </div>
-
-
 <div class="mt-5" *ngIf="(basket$ | async)">
-
     <div class="container">
         <div class="row">
-
-            <div class="table-responsive">
-                <table class="table">
-                    <thead class="bg-light m-2">
-                        <tr class="text-uppercase py-4">
-                            <th scope="col">Product</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Remove</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let item of (basket$ | async).basketItems">
-                            <th scope="row">
-                                <div class="p-2">
-
-                                    <img src="{{item.productPicture}}" alt="{{item.productName}}"
-                                        style="max-height: 70px;">
-                                    <div class="mr-3 d-inline-block align-middle">
-                                        <h6 class="mb-0 mx-2">
-                                            <a style="text-decoration: none;" class="text-danger"
-                                                routerLink="/shop/{{item.id}}"> {{item.productName}}</a>
-                                        </h6>
-                                        <span class="text-muted mx-2" style="font-style:italic;">
-                                            category: {{item.category}}
-                                        </span>
-                                    </div>
-                                </div>
-                            </th>
-                            <td class="align-middle"> <strong>{{item.price | currency}}</strong> </td>
-                            <td class="align-middle">
-                                <div class="d-flex align-items-center">
-                                    <i (click)="decrementBasketItemQuantity(item)" class="fa fa-minus-square text-danger mx-2" style="cursor: pointer;"></i>
-                                    <span style="font-weight: bold; font-size: 1em;">{{item.quantity}}</span>
-                                    <i (click)="incrementBasketItemQuantity(item)" class="fa fa-plus-square text-danger mx-2" style="cursor: pointer;"></i>
-                                </div>
-                            </td>
-
-                            <td class="align-middle">
-                                <strong>{{item.price * item.quantity | currency}} </strong>
-                            </td>
-                            <td class="align-middle text-center">
-                                <a class="text-danger">
-                                    <i (click)="removeBasketItem(item)" class="fa fa-trash-o" style="font-size: 1.5em;cursor: pointer;"></i>
-                                </a>
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
+            <app-basket-summery (decrement)="decrementBasketItemQuantity($event)"
+                (increment)="incrementBasketItemQuantity($event)" (remove)="removeBasketItem($event)">
+            </app-basket-summery>
         </div>
 
         <div class="row">
@@ -70,8 +18,4 @@
             </div>
         </div>
     </div>
-
- 
-
-
 </div>

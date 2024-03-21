@@ -18,6 +18,12 @@ const routes: Routes = [
       .then(mo => mo.BasketModule), data: { breadcurmb: 'Basket' }
   },
   {
+    path: 'orders',
+    canActivate:[AuthGuard],
+    loadChildren: () => import('./orders/orders.module')
+      .then(mo => mo.OrdersModule), data: { breadcurmb: 'Orders' }
+  },
+  {
     path: 'checkout',
     canActivate:[AuthGuard],
     loadChildren: () => import('./checkout/checkout.module')
