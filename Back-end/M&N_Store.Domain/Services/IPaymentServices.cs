@@ -1,4 +1,5 @@
 ﻿using M_N_Store.Domain.Entities;
+using M_N_Store.Domain.Entities.Order;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,7 @@ namespace M_N_Store.Domain.Services
     public interface IPaymentServices
     {
         Task<CustomerBasket> CreateOrUpdatePayment(string basketId);
+        Task<Order> UpdateOrderPaymentSucceeded(string paymentIntentId);
+        Task<Order> UpdateOrderPaymentFailed(string paymentIntentId);
     }
 }

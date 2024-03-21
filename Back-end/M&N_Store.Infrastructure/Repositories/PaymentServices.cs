@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using M_N_Store.Domain.Entities.Order;
 
 namespace M_N_Store.Infrastructure.Repositories
 {
@@ -79,6 +80,26 @@ namespace M_N_Store.Infrastructure.Repositories
             }
             await _uOW.BasketRepository.UpdateBasketAsync(basket);
             return basket;
+        }
+
+        public async Task<Order> UpdateOrderPaymentFailed(string paymentIntentId)
+        {
+            var order = await _context.Orders.Where(x => x.PaymentIntentId == paymentIntentId).FirstOrDefaultAsync();
+            if (order == null) return null;
+
+            order.OrderStatus = OrderStatus.PaymentFelid;
+            await _context.SaveChangesAsync();
+            return order;
+        }
+
+        public async Task<Order> UpdateOrderPaymentSucceeded(string paymentIntentId)
+        {
+            var order = await _context.Orders.Where(x => x.PaymentIntentId == paymentIntentId).FirstOrDefaultAsync();
+            if (order == null) return null;
+
+            order.OrderStatus = OrderStatus.PaymentReceived;
+            await _context.SaveChangesAsync();
+            return order;
         }
     }
 }

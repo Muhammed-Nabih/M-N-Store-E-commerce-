@@ -83,11 +83,12 @@ ngOnDestroy() {
   async submitOrder() {
     this.loading = true;
     const basket = this.basketServices.getCurrentBasketValue();
+    if(!basket) throw new Error('This Basket Can Not Found');
     try {
       const createOrder = await this.createOrder(basket);
       const paymentResult = await this.confirmPaymentWithStripe(basket);
       if (paymentResult.paymentIntent) {
-        this.basketServices.deleteLocalBasekt(basket.id);
+        this.basketServices.deleteBasket(basket);
         const navigationExtras: NavigationExtras = { state: createOrder }
         this.router.navigate(['checkout/success'], navigationExtras)
       } else {
